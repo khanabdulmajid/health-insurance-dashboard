@@ -25,8 +25,18 @@ SECRET_KEY = "django-insecure-bglpi(6=k2r+7h)a5(9z7(482a!jpy0v%+6y1ltzd#57i4vrj-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*", ".railway.app"]  # allow Railway domain
+# ALLOWED_HOSTS = ["*", ".railway.app"]  # allow Railway domain
 
+ALLOWED_HOSTS = [
+    "health-insurance-dashboard-production.up.railway.app",
+    "127.0.0.1",
+    "localhost",
+]
+
+# Add this right after ALLOWED_HOSTS
+CSRF_TRUSTED_ORIGINS = [
+    "https://health-insurance-dashboard-production.up.railway.app"
+]
 
 # Application definition
 
