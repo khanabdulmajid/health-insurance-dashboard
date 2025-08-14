@@ -1,0 +1,7 @@
+db.sqlite3
+*.pyc
+__pycache__/
+.env
+/staticfiles
+/dashboard/data/*.csv
+/dashboard/model/*.pkl
