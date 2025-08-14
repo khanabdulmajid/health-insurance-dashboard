@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard | ML{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">ML Visualizations</h2>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Healthcare Chart</h5>
+                <small class="text-muted">Out-of-Pocket Burden vs Health</small>
+            </div>
+            <div class="card-body">
+                <img src="data:image/png;base64,{{ chart1 }}" class="img-fluid" alt="Chart 1">
+            </div>
+            <div class="card-body p-24">
+                <ul class="d-flex flex-wrap align-items-center justify-content-center my-3 gap-3">
+                    <li class="d-flex align-items-center gap-2">
+                        <span class="w-12-px h-8-px rounded-pill bg-warning-600"></span>
+                        <span class="text-secondary-light text-sm fw-semibold">Male:
+                            <span class="text-primary-light fw-bold">{{ male_count }}</span>
+                        </span>
+                    </li>
+                    <li class="d-flex align-items-center gap-2">
+                        <span class="w-12-px h-8-px rounded-pill bg-success-600"></span>
+                        <span class="text-secondary-light text-sm fw-semibold">Female:
+                            <span class="text-primary-light fw-bold">{{ female_count }}</span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Insurance Charges</h5>
+                <small class="text-muted">Average Charges by Insurance Type</small>
+            </div>
+            <div class="card-body">
+                <img src="data:image/png;base64,{{ chart2 }}" class="img-fluid" alt="Chart 2">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Health Ratings by Family Income Group</h5>
+                <small class="text-muted">Grouped Countplot with hue by Income Tier</small>
+            </div>
+            <div class="card-body">
+                <img src="data:image/png;base64,{{ chart3 }}" class="img-fluid" alt="Chart 3">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

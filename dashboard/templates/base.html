@@ -1,0 +1,267 @@
+<html lang="en" data-theme="light">
+
+<!-- Mirrored from wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/index-8.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 03 Aug 2025 09:00:47 GMT -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wowdash - Bootstrap 5 Admin Dashboard HTML Template</title>
+  <link rel="icon" type="image/png"
+    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/images/favicon.png" sizes="16x16">
+  <!-- remix icon font css  -->
+  <link rel="stylesheet"
+    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/remixicon.css">
+  <!-- BootStrap css -->
+  <link rel="stylesheet"
+    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/bootstrap.min.css">
+  <!-- Apex Chart css -->
+  <link rel="stylesheet"
+    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/apexcharts.css">
+  <!-- Data Table css -->
+  <link rel="stylesheet"
+    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/dataTables.min.css">
+  <!-- Text Editor css -->
+  <link rel="stylesheet"
+    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/editor-katex.min.css">
+  <link rel="stylesheet"
+    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/editor.atom-one-dark.min.css">
+  <link rel="stylesheet"
+    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/editor.quill.snow.css">
+  <!-- Date picker css -->
+  <link rel="stylesheet"
+    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/flatpickr.min.css">
+  <!-- Calendar css -->
+  <link rel="stylesheet"
+    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/full-calendar.css">
+  <!-- Vector Map css -->
+  <link rel="stylesheet"
+    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/jquery-jvectormap-2.0.5.css">
+  <!-- Popup css -->
+  <link rel="stylesheet"
+    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/magnific-popup.css">
+  <!-- Slick Slider css -->
+  <link rel="stylesheet"
+    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/slick.css">
+  <!-- prism css -->
+  <link rel="stylesheet"
+    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/prism.css">
+  <!-- file upload css -->
+  <link rel="stylesheet"
+    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/file-upload.css">
+
+  <link rel="stylesheet"
+    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/audioplayer.css">
+  <!-- main css -->
+  <link rel="stylesheet"
+    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/style.min.css">
+</head>
+
+<body>
+  <aside class="sidebar">
+    <button type="button" class="sidebar-close-btn">
+      <iconify-icon icon="radix-icons:cross-2"></iconify-icon>
+    </button>
+    <div>
+      <a href="{% url 'dashboard_home' %}" class="sidebar-logo">
+       <svg width="280" height="80" viewBox="0 0 280 80" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="primaryGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#487fff;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="accentGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="40" cy="40" r="30" fill="url(#primaryGradient1)" opacity="0.1"/>
+                        <circle cx="40" cy="40" r="22" fill="none" stroke="url(#primaryGradient1)" stroke-width="1" opacity="0.2"/>
+                        <g transform="translate(40,40)">
+                            <rect x="-2" y="-12" width="4" height="24" fill="url(#accentGradient1)" rx="2" opacity="0.3" transform="translate(1,1)"/>
+                            <rect x="-12" y="-2" width="24" height="4" fill="url(#accentGradient1)" rx="2" opacity="0.3" transform="translate(1,1)"/>
+                            <rect x="-2" y="-12" width="4" height="24" fill="url(#accentGradient1)" rx="2"/>
+                            <rect x="-12" y="-2" width="24" height="4" fill="url(#accentGradient1)" rx="2"/>
+                            <circle cx="0" cy="0" r="3" fill="#ffffff" opacity="0.8"/>
+                        </g>
+                        <g transform="translate(85, 25)">
+                            <rect x="0" y="20" width="4" height="15" fill="url(#primaryGradient1)" rx="1" opacity="0.7">
+                                <animate attributeName="height" values="15;20;15" dur="2s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="8" y="15" width="4" height="20" fill="url(#primaryGradient1)" rx="1" opacity="0.8">
+                                <animate attributeName="height" values="20;25;20" dur="2.5s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="16" y="18" width="4" height="17" fill="url(#primaryGradient1)" rx="1" opacity="0.6">
+                                <animate attributeName="height" values="17;22;17" dur="2.2s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="24" y="12" width="4" height="23" fill="url(#primaryGradient1)" rx="1">
+                                <animate attributeName="height" values="23;28;23" dur="1.8s" repeatCount="indefinite"/>
+                            </rect>
+                            <polyline points="2,27 10,22 18,25 26,19" fill="none" stroke="url(#accentGradient1)" stroke-width="2" opacity="0.8"/>
+                            <circle cx="2" cy="27" r="1.5" fill="url(#accentGradient1)"/>
+                            <circle cx="10" cy="22" r="1.5" fill="url(#accentGradient1)"/>
+                            <circle cx="18" cy="25" r="1.5" fill="url(#accentGradient1)"/>
+                            <circle cx="26" cy="19" r="1.5" fill="url(#accentGradient1)"/>
+                        </g>
+                        <text x="125" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#1e293b">MEPS</text>
+                        <text x="185" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="500" fill="url(#primaryGradient1)">Analytics</text>
+                        <text x="125" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="400" fill="#64748b">Medical Expenditure Panel Survey</text>
+                        <text x="125" y="62" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="400" fill="#94a3b8">Healthcare Data Dashboard</text>
+                    </svg>
+      </a>
+    </div>
+    <div class="sidebar-menu-area">
+      <ul class="sidebar-menu" id="sidebar-menu">
+        <li class="dropdown">
+          <a style="color:blue;">
+            <iconify-icon icon="solar:clipboard-text-outline"></iconify-icon>
+            <span> User Input</span>
+          </a>
+        
+        </li>
+      </ ul>
+      <!-- Sidebar form -->
+       <div>
+        <form method="post" action="{% url 'dashboard_home' %}">
+          {% csrf_token %}
+
+          <!-- SEX -->
+          <div class="mb-3">
+            <label class="form-label fw-bold">Sex</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="SEX" id="sexMale" value="Male" required>
+              <label class="form-check-label" for="sexMale">Male</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="SEX" id="sexFemale" value="Female">
+              <label class="form-check-label" for="sexFemale">Female</label>
+            </div>
+          </div>
+
+          <!-- MARSTAT -->
+          <div class="mb-3">
+            <label class="form-label fw-bold">Marital Status</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="MARSTAT" id="marSingle" value="Single" required>
+              <label class="form-check-label" for="marSingle">Single</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="MARSTAT" id="marMarried" value="Married">
+              <label class="form-check-label" for="marMarried">Married</label>
+            </div>
+          </div>
+
+          <!-- CANCEREV -->
+          <div class="mb-3">
+            <label class="form-label fw-bold">Cancer</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="CANCEREV" id="cancerYes" value="Yes" required>
+              <label class="form-check-label" for="cancerYes">Yes</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="CANCEREV" id="cancerNo" value="No">
+              <label class="form-check-label" for="cancerNo">No</label>
+            </div>
+          </div>
+
+          <!-- CHOLHIGHEV -->
+          <div class="mb-3">
+            <label class="form-label fw-bold">High Cholesterol</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="CHOLHIGHEV" id="cholYes" value="Yes" required>
+              <label class="form-check-label" for="cholYes">Yes</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="CHOLHIGHEV" id="cholNo" value="No">
+              <label class="form-check-label" for="cholNo">No</label>
+            </div>
+          </div>
+
+          <!-- DIABETICEV -->
+          <div class="mb-3">
+            <label class="form-label fw-bold">Diabetes</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="DIABETICEV" id="diabetesYes" value="Yes" required>
+              <label class="form-check-label" for="diabetesYes">Yes</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="DIABETICEV" id="diabetesNo" value="No">
+              <label class="form-check-label" for="diabetesNo">No</label>
+            </div>
+          </div>
+
+          <!-- HEARTCONEV -->
+          <div class="mb-3">
+            <label class="form-label fw-bold">Heart Condition</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="HEARTCONEV" id="heartYes" value="Yes" required>
+              <label class="form-check-label" for="heartYes">Yes</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="HEARTCONEV" id="heartNo" value="No">
+              <label class="form-check-label" for="heartNo">No</label>
+            </div>
+          </div>
+
+          <!-- HYPERTENAGE -->
+          <div class="mb-3">
+            <label class="form-label fw-bold">Hypertension</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="HYPERTEN" id="hypertensionYes" value="Yes" required>
+              <label class="form-check-label" for="hypertensionYes">Yes</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="HYPERTEN" id="hypertensionNo" value="No">
+              <label class="form-check-label" for="hypertensionNo">No</label>
+            </div>
+          </div>
+
+          <div class="mb-3" id="hypertensionAgeField" style="display: none;">
+            <label for="HYPERTENAGE" class="form-label fw-bold">Hypertension Age</label>
+            <input type="number" min="0" class="form-control" id="HYPERTENAGE" name="HYPERTENAGE" value="0">
+          </div>
+
+          <!-- AGE Slider -->
+          <div class="mb-3">
+            <label for="ageSlider" class="form-label fw-bold">Age: <span id="ageValue">30</span></label>
+            <input type="range" class="form-range" id="ageSlider" name="AGE" min="0" max="100" value="30"
+              oninput="document.getElementById('ageValue').textContent = this.value">
+          </div>
+
+          <!-- Insurance Type -->
+          <div class="mb-3">
+            <label for="insuranceType" class="form-label fw-bold">Insurance Type</label>
+            <select class="form-select" id="insuranceType" name="INSURANCE_TYPE" required>
+              <option value="">Select</option>
+              <option value="Private Only">Private</option>
+              <option value="Public Only">Public</option>
+              <option value="Mixed">Mixed</option>
+              <option value="Uninsured">No Insurance</option>
+              <!-- <option value="None">None</option> -->
+            </select>
+          </div>
+
+          <!-- Family Income -->
+          <div class="mb-3">
+            <label for="familyIncome" class="form-label fw-bold">Family Income ($)</label>
+            <input type="number" class="form-control" id="familyIncome" name="FAMILY_INCOME" min="0">
+          </div>
+
+          <!-- Family Size -->
+          <div class="mb-3">
+            <label for="familySize" class="form-label fw-bold">Family Size</label>
+            <input type="number" class="form-control" id="familySize" name="FAMILY_SIZE" min="1">
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+      </div>
+
+
+    </div>
+
+  </aside>
+
+  <main class="main-content">
+    {% block content %}{% endblock %}
+  </main>
