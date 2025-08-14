@@ -80,7 +80,9 @@ def dashboard_home(request):
     else:
         avg_health_score = 0.0
 
-
+    prediction_prob =0
+    predicted_health_status= 0
+    suitability_status=None
 
     
     
