@@ -1,146 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-  <link
-    rel="stylesheet"
-    href="../contrast-bootstrap-pro/css/bootstrap.min.css" />
-  <link
-    rel="stylesheet"
-    href="../contrast-bootstrap-pro/css/cdb.css" />
-  <script
-    src="../contrast-bootstrap-pro/js/cdb.js"></script>
-  <script
-    src="../contrast-bootstrap-pro/js/bootstrap.min.js"></script>
-  <script
-    src="https://kit.fontawesome.com/9d1d9a82d2.js"
-    crossorigin="anonymous"></script>
-
-  <title>How to create bootstrap charts using bootstrap 5</title>
+  <title>Apex Radial Chart Test</title>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
-<style>
-  .chart-container {
-    width: 50%;
-    height: 50%;
-    margin: auto;
-  }
-</style>
+<body style="margin:40px;">
 
-<body>
-  <div class="card chart-container">
-    <canvas id="chart"></canvas>
-  </div>
+<div id="diseaseRadialChart" style="width:500px; height:500px;"></div>
 
-</body>
-
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js">
-</script>
 <script>
-      const ctx = document.getElementById("chart").getContext('2d');
-      const myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: ["sunday", "monday", "tuesday",
-          "wednesday", "thursday", "friday", "saturday"],
-          datasets: [{
-            label: 'Last week',
-            backgroundColor: 'rgba(161, 198, 247, 1)',
-            borderColor: 'rgb(47, 128, 237)',
-            data: [3000, 4000, 2000, 5000, 8000, 9000, 2000],
-          }]
-        },
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true,
+  document.addEventListener("DOMContentLoaded", function () {
+    var options = {
+      series: [70, 55, 40, 25],
+      chart: {
+        type: 'radialBar',
+        height: 500
+      },
+      plotOptions: {
+        radialBar: {
+          dataLabels: {
+            name: {
+              fontSize: '16px',
+            },
+            value: {
+              fontSize: '14px',
+            },
+            total: {
+              show: true,
+              label: 'Total',
+              formatter: function (w) {
+                return w.globals.series.reduce((a, b) => a + b, 0);
               }
-            }]
+            }
           }
-        },
-      });
-</script>
-
-</html>
-
-<div id="dualAxisChart"></div>
-
-<script>
-  const goodBadData = JSON.parse('{{ good_bad_data|safe }}');
-  let selectedType = document.getElementById("insuranceSelect").value;
-
-  function getDualAxisData(insType) {
-    const ageGroups = Object.keys(goodBadData[insType]);
-    const goodCounts = ageGroups.map(ag => goodBadData[insType][ag]?.Good || 0);
-    const badCounts = ageGroups.map(ag => goodBadData[insType][ag]?.Bad || 0);
-    
-    // Calculate Bad % = Bad / (Good+Bad)
-    const badPercent = ageGroups.map((ag, i) => {
-      const total = goodCounts[i] + badCounts[i];
-      return total > 0 ? (badCounts[i] / total * 100).toFixed(1) : 0;
-    });
-
-    return { categories: ageGroups, goodCounts, badPercent };
-  }
-
-  let data = getDualAxisData(selectedType);
-
-  const options = {
-    chart: {
-      height: 350,
-      type: 'line',
-      stacked: false
-    },
-    series: [
-      {
-        name: 'Good Count',
-        type: 'column',
-        data: data.goodCounts
+        }
       },
-      {
-        name: 'Bad %',
-        type: 'line',
-        data: data.badPercent
+      labels: ['Diabetes', 'Heart Disease', 'Cancer', 'Hypertension'],
+      colors: ['#10b981', '#f59e0b', '#ef4444', '#3b82f6'],
+      legend: {
+        show: true,
+        position: 'bottom'
       }
-    ],
-    colors: ['#28a745', '#dc3545'], // green bars, red line
-    stroke: { width: [0, 3] }, // 0 for bars, 3px for line
-    dataLabels: { enabled: true },
-    xaxis: { categories: data.categories },
-    yaxis: [
-      {
-        title: { text: "Good Count" }
-      },
-      {
-        opposite: true,
-        title: { text: "Bad % (Right Axis)" },
-        min: 0,
-        max: 100
-      }
-    ],
-    legend: { position: 'top' }
-  };
+    };
 
-  const dualAxisChart = new ApexCharts(document.querySelector("#dualAxisChart"), options);
-  dualAxisChart.render();
-
-  // Update chart on dropdown change
-  document.getElementById("insuranceSelect").addEventListener("change", function () {
-    selectedType = this.value;
-    let data = getDualAxisData(selectedType);
-
-    dualAxisChart.updateOptions({
-      xaxis: { categories: data.categories }
-    });
-    dualAxisChart.updateSeries([
-      { data: data.goodCounts },
-      { data: data.badPercent }
-    ]);
+    var chart = new ApexCharts(document.querySelector("#diseaseRadialChart"), options);
+    chart.render();
   });
 </script>
+
+</body>
+</html>

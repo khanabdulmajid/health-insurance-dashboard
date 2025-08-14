@@ -84,6 +84,32 @@ def dashboard_home(request):
     predicted_health_status= 0
     suitability_status=None
 
+
+
+    # Map disease column -> display name
+    disease_map = {
+    'CANCEREV': 'Cancer',
+    'CHOLHIGHEV': 'High Cholesterol',
+    'DIABETICEV': 'Diabetes',
+    'HEARTCONEV': 'Heart Condition',
+    'HYPERTENAGE': 'Hypertension'
+    }
+
+    disease_counts = {}
+    total_patients = len(df)  # total rows
+
+    for col, name in disease_map.items():
+        if col in balanced_df.columns:
+            count = int((balanced_df[col] > 0).sum())
+            percentage = round((count / total_patients) * 100, 2) if total_patients > 0 else 0
+            disease_counts[name] = percentage
+
+    # Convert to lists for chart
+    disease_labels = list(disease_counts.keys())
+    disease_values = list(disease_counts.values())
+
+    # Also pack legend-friendly pairs
+    disease_data = list(zip(disease_labels, disease_values))
     
     
 
@@ -147,7 +173,7 @@ def dashboard_home(request):
 
         # Prepare features for model
         features = np.array([[sex, marstat, family_size, family_income, age, cancer, chol,
-                              diabetes, heart, hypertension, hypertension_age, ins_encoded]])
+                              diabetes, heart, hypertension, hypertension_age, ins_encoded]]) # change is poverty here instead of hypertenage
         
 
         if ins_type_form == "Private Only":
@@ -170,7 +196,8 @@ def dashboard_home(request):
         prediction_prob = model.predict_proba(features)[0][prediction] * 100
         predicted_health_status = "Good" if prediction == 1 else "Bad"
         suitability_status = "Suitable" if predicted_health_status == "Good" else "Not Suitable"
-        print(f"prediction_prob = {prediction_prob}\n avg_charges_per_head = {avg_charges_per_head  }")
+       
+    print(f"disease_values: {disease_values  }")
 
 
     context = {
@@ -186,8 +213,11 @@ def dashboard_home(request):
         "prediction": prediction_prob,
         "predicted_health_status": predicted_health_status,
         "predicted_insurance_type": request.POST.get("INSURANCE_TYPE") if request.method == "POST" else None,
-        "suitability_status" : suitability_status
-   
+        "suitability_status" : suitability_status,
+        "disease_data": disease_data,
+        "disease_labels": disease_labels,
+        "disease_values": disease_values,
+        
     }
 
     return render(request, "index.html", context)

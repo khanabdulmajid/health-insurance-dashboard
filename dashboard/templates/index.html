@@ -212,22 +212,20 @@
             <div class="card h-100">
               <div class="card-header">
                 <div class="d-flex align-items-center flex-wrap gap-2 justify-content-between">
-                  <h6 class="mb-2 fw-bold text-lg mb-0">Patient Visited by Depertment</h6>
+                  <h6 class="mb-2 fw-bold text-lg mb-0">Prevalence of Diseases</h6>
                 </div>
               </div>
               <div class="card-body p-24 d-flex align-items-center gap-16">
                 <div id="radialMultipleBar"></div>
                 <ul class="d-flex flex-column gap-12">
-                  <li>
-                    <span class="text-lg">Cardiology: <span class="text-primary-600 fw-semibold">80%</span> </span>
-                  </li>
-                  <li>
-                    <span class="text-lg">Psychiatry: <span class="text-warning-600 fw-semibold">40%</span> </span>
-                  </li>
-                  <li>
-                    <span class="text-lg">Pediatrics: <span class="text-success-600 fw-semibold">10%</span> </span>
-                  </li>
-                </ul>
+  {% for label, value in disease_data %}
+    <li>
+      <span class="text-sm">
+        {{ label }}: <span class="text-sm text fw-semibold">{{ value }}%</span>
+      </span>
+    </li>
+  {% endfor %}
+</ul>
               </div>
             </div>
           </div>
@@ -322,10 +320,7 @@
 <script src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
 <script src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.candy.js"></script>
 
-<!-- jQuery library js -->
-<!-- <script src="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/js/lib/jquery-3.7.1.min.js"></script> -->
-<!-- Bootstrap js -->
-<!-- <script src="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/js/lib/bootstrap.bundle.min.js"></script> -->
+
 <!-- Apex Chart js -->
 <script
   src="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/js/lib/apexcharts.min.js"></script>
@@ -335,24 +330,7 @@
 <!-- Iconify Font js -->
 <script
   src="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/js/lib/iconify-icon.min.js"></script>
-<!-- jQuery UI js -->
-<!-- <script src="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/js/lib/jquery-ui.min.js"></script> -->
-<!-- Vector Map js -->
-<!-- <script src="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/js/lib/jquery-jvectormap-2.0.5.min.js"></script> -->
-<!-- <script src="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/js/lib/jquery-jvectormap-world-mill-en.js"></script> -->
-<!-- Popup js -->
-<!-- <script src="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/js/lib/magnifc-popup.min.js"></script> -->
-<!-- Slick Slider js -->
-<!-- <script src="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/js/lib/slick.min.js"></script> -->
-<!-- prism js -->
-<!-- <script src="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/js/lib/prism.js"></script> -->
-<!-- file upload js -->
-<!-- <script src="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/js/lib/file-upload.js"></script> -->
-<!-- audioplayer -->
-<!-- <script src="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/js/lib/audioplayer.js"></script> -->
 
-<!-- main js -->
-<!-- <script src="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/js/app.js"></script> -->
 
 <script>
   const allData = JSON.parse('{{ all_health_data|safe }}');
@@ -503,20 +481,60 @@
   // ================================ Client Payment Status chart End ================================ 
 
   // ================================= Multiple Radial Bar Chart Start =============================
+  // var options = {
+  //   series:  {{ disease_values|safe }}, 
+  //   chart: {
+  //     height: 300,
+  //     type: 'radialBar',
+  //   },
+  //   colors: ['#3D7FF9', '#ff9f29', '#16a34a'],
+  //   stroke: {
+  //     lineCap: 'round',
+  //   },
+  //   plotOptions: {
+  //     radialBar: {
+  //       hollow: {
+  //         size: '10%',  // Adjust this value to control the bar width
+  //       },
+  //       dataLabels: {
+  //         name: {
+  //           fontSize: '16px',
+  //         },
+  //         value: {
+  //           fontSize: '16px',
+  //         },
+  //         // total: {
+  //         //     show: true,
+  //         //     formatter: function (w) {
+  //         //         return '82%'
+  //         //     }
+  //         // }
+  //       },
+  //       track: {
+  //         margin: 20, // Space between the bars
+  //       }
+  //     }
+  //   },
+  //   labels: ['Cardiology', 'Psychiatry', 'Pediatrics'],
+  // };
+
+  // var chart = new ApexCharts(document.querySelector("#radialMultipleBar"), options);
+  // chart.render();
+
   var options = {
-    series: [80, 40, 10],
+    series: {{ disease_values|safe }},   // percentages from backend
     chart: {
-      height: 300,
+      height: 350,
       type: 'radialBar',
     },
-    colors: ['#3D7FF9', '#ff9f29', '#16a34a'],
+    colors: ['#3D7FF9', '#ff9f29', '#16a34a', '#ef4444', '#06b6d4'], // extend for all diseases
     stroke: {
       lineCap: 'round',
     },
     plotOptions: {
       radialBar: {
         hollow: {
-          size: '10%',  // Adjust this value to control the bar width
+          size: '4%',   // width of bars
         },
         dataLabels: {
           name: {
@@ -524,24 +542,32 @@
           },
           value: {
             fontSize: '16px',
+            formatter: function (val) {
+              return val + "%";   // append percentage
+            }
           },
           // total: {
-          //     show: true,
-          //     formatter: function (w) {
-          //         return '82%'
-          //     }
+          //   show: true,
+          //   // label: 'Avg %',
+          //   formatter: function (w) {
+          //     // compute average percentage dynamically
+          //     let values = w.globals.series;
+          //     let avg = values.reduce((a, b) => a + b, 0) / values.length;
+          //     return avg.toFixed(1) + "%";
+          //   }
           // }
         },
         track: {
-          margin: 20, // Space between the bars
+          margin: 20, // space between concentric rings
         }
       }
     },
-    labels: ['Cardiology', 'Psychiatry', 'Pediatrics'],
+    labels: {{ disease_labels|safe }},   // disease names from backend
   };
 
   var chart = new ApexCharts(document.querySelector("#radialMultipleBar"), options);
   chart.render();
+
   // ================================= Multiple Radial Bar Chart End =============================
 
 </script>
