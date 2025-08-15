@@ -7,6 +7,23 @@ import json
 import numpy as np
 from django.shortcuts import render
 
+
+
+def get_poverty_threshold(family_size):
+    base_thresholds = {
+        1: 15060,
+        2: 20440,
+        3: 25820,
+        4: 31200
+    }
+    if family_size in base_thresholds:
+        return base_thresholds[family_size]
+    else:
+        return 31200 + (family_size - 4) * 5380
+
+
+
+
 def dashboard_home(request):
     # Read file
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -110,6 +127,9 @@ def dashboard_home(request):
 
     # Also pack legend-friendly pairs
     disease_data = list(zip(disease_labels, disease_values))
+
+
+    
     
     
 
@@ -169,11 +189,18 @@ def dashboard_home(request):
             avg_health_score = float(match.values[0]) if not match.empty else 0.0
         else:
             avg_health_score = 0.0
+
+
+        # ispoverty
+    # Calculate poverty ratio & poverty flag
+        poverty_threshold = get_poverty_threshold(family_size)
+        poverty_ratio = family_income / poverty_threshold
+        is_poverty = 1 if poverty_ratio < 1.0 else 0
         
 
         # Prepare features for model
         features = np.array([[sex, marstat, family_size, family_income, age, cancer, chol,
-                              diabetes, heart, hypertension, hypertension_age, ins_encoded]]) # change is poverty here instead of hypertenage
+                              diabetes, heart, hypertension, is_poverty, ins_encoded]]) # change is poverty here instead of hypertenage
         
 
         if ins_type_form == "Private Only":

@@ -5,52 +5,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wowdash - Bootstrap 5 Admin Dashboard HTML Template</title>
-  <link rel="icon" type="image/png"
-    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/images/favicon.png" sizes="16x16">
-  <!-- remix icon font css  -->
-  <link rel="stylesheet"
-    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/remixicon.css">
-  <!-- BootStrap css -->
-  <link rel="stylesheet"
-    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/bootstrap.min.css">
-  <!-- Apex Chart css -->
-  <link rel="stylesheet"
-    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/apexcharts.css">
+  <title>MEPS Dashboard</title>
+  <!-- <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0icHJpbWFyeUdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojNDg3ZmZmO3N0b3Atb3BhY2l0eToxIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMzYjgyZjY7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJhY2NlbnRHcmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzEwYjk4MTtzdG9wLW9wYWNpdHk6MSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMDU5NjY5O3N0b3Atb3BhY2l0eToxIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNoYWRvdyIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSIxIiBzdGREZXZpYXRpb249IjEiIGZsb29kLWNvbG9yPSIjMDAwMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjIiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxNSIgZmlsbD0idXJsKCNwcmltYXJ5R3JhZCkiIG9wYWNpdHk9IjAuMSIvPgogIDxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjEzIiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjcHJpbWFyeUdyYWQpIiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC4zIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYsMTYpIiBmaWx0ZXI9InVybCgjc2hhZG93KSI+CiAgICA8cmVjdCB4PSItMS41IiB5PSItOCIgd2lkdGg9IjMiIGhlaWdodD0iMTYiIGZpbGw9InVybCgjYWNjZW50R3JhZCkiIHJ4PSIxLjUiLz4KICAgIDxyZWN0IHg9Ii04IiB5PSItMS41IiB3aWR0aD0iMTYiIGhlaWdodD0iMyIgZmlsbD0idXJsKCNhY2NlbnRHcmFkKSIgcng9IjEuNSIvPgogICAgPGNpcmNsZSBjeD0iMCIgY3k9IjAiIHI9IjIiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuOSIvPgogIDwvZz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMiwgOCkiPgogICAgPHJlY3QgeD0iMCIgeT0iOCIgd2lkdGg9IjEuNSIgaGVpZ2h0PSI0IiBmaWxsPSJ1cmwoI3ByaW1hcnlHcmFkKSIgcng9IjAuNSIgb3BhY2l0eT0iMC44Ii8+CiAgICA8cmVjdCB4PSIyLjUiIHk9IjYiIHdpZHRoPSIxLjUiIGhlaWdodD0iNiIgZmlsbD0idXJsKCNwcmltYXJ5R3JhZCkiIHJ4PSIwLjUiIG9wYWNpdHk9IjAuOSIvPgogICAgPHJlY3QgeD0iNSIgeT0iNyIgd2lkdGg9IjEuNSIgaGVpZ2h0PSI1IiBmaWxsPSJ1cmwoI3ByaW1hcnlHcmFkKSIgcng9IjAuNSIgb3BhY2l0eT0iMC43Ii8+CiAgPC9nPgogIDxwb2x5bGluZSBwb2ludHM9IjIyLjUsMTIgMjQuNSwxMCAyNi41LDExIiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjYWNjZW50R3JhZCkiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC44Ii8+Cjwvc3ZnPg=="> -->
+  <!-- <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAA..." sizes="32x32">   -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0icHJpbWFyeUdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojZmZmZmZmO3N0b3Atb3BhY2l0eToxIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNlMmU4ZjA7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJhY2NlbnRHcmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzIyYzU1ZTtzdG9wLW9wYWNpdHk6MSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMTZhMzRhO3N0b3Atb3BhY2l0eToxIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmx1ZUdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojM2I4MmY2O3N0b3Atb3BhY2l0eToxIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMxZDRlZDg7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0ic2hhZG93IiB4PSItMjAlIiB5PSItMjAlIiB3aWR0aD0iMTQwJSIgaGVpZ2h0PSIxNDAlIj4KICAgICAgPGZlRHJvcFNoYWRvdyBkeD0iMCIgZHk9IjEiIHN0ZERldmlhdGlvbj0iMiIgZmxvb2QtY29sb3I9IiMwMDAwMDAiIGZsb29kLW9wYWNpdHk9IjAuNCIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjE1IiBmaWxsPSJ1cmwoI2JsdWVHcmFkKSIgc3Ryb2tlPSIjMWUyOTNiIiBzdHJva2Utd2lkdGg9IjEiLz4KICA8Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxMyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC41Ii8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYsMTYpIiBmaWx0ZXI9InVybCgjc2hhZG93KSI+CiAgICA8cmVjdCB4PSItMS41IiB5PSItOCIgd2lkdGg9IjMiIGhlaWdodD0iMTYiIGZpbGw9InVybCgjYWNjZW50R3JhZCkiIHJ4PSIxLjUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KICAgIDxyZWN0IHg9Ii04IiB5PSItMS41IiB3aWR0aD0iMTYiIGhlaWdodD0iMyIgZmlsbD0idXJsKCNhY2NlbnRHcmFkKSIgcng9IjEuNSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjAuNSIvPgogICAgPGNpcmNsZSBjeD0iMCIgY3k9IjAiIHI9IjIiIGZpbGw9IiNmZmZmZmYiIHN0cm9rZT0iIzE2YTM0YSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KICA8L2c+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjEsIDgpIj4KICAgIDxyZWN0IHg9IjAiIHk9IjgiIHdpZHRoPSIyIiBoZWlnaHQ9IjQiIGZpbGw9IiNmZmZmZmYiIHJ4PSIwLjUiIG9wYWNpdHk9IjAuOSIgc3Ryb2tlPSIjM2I4MmY2IiBzdHJva2Utd2lkdGg9IjAuMyIvPgogICAgPHJlY3QgeD0iMyIgeT0iNiIgd2lkdGg9IjIiIGhlaWdodD0iNiIgZmlsbD0iI2ZmZmZmZiIgcng9IjAuNSIgb3BhY2l0eT0iMC45IiBzdHJva2U9IiMzYjgyZjYiIHN0cm9rZS13aWR0aD0iMC4zIi8+CiAgICA8cmVjdCB4PSI2IiB5PSI3IiB3aWR0aD0iMiIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmZmZmIiByeD0iMC41IiBvcGFjaXR5PSIwLjkiIHN0cm9rZT0iIzNiODJmNiIgc3Ryb2tlLXdpZHRoPSIwLjMiLz4KICA8L2c+CiAgPHBvbHlsaW5lIHBvaW50cz0iMjEsMTIgMjQsMTAgMjcsMTEiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxLjUiIG9wYWNpdHk9IjAuOSIvPgogIDxjaXJjbGUgY3g9IjIxIiBjeT0iMTIiIHI9IjAuOCIgZmlsbD0iI2ZmZmZmZiIvPgogIDxjaXJjbGUgY3g9IjI0IiBjeT0iMTAiIHI9IjAuOCIgZmlsbD0iI2ZmZmZmZiIvPgogIDxjaXJjbGUgY3g9IjI3IiBjeT0iMTEiIHI9IjAuOCIgZmlsbD0iI2ZmZmZmZiIvPgo8L3N2Zz4K">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css">
+  <!-- Bootstrap 5 CSS - Official CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<!-- ApexCharts CSS - CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.49.1/dist/apexcharts.css">
+
   <!-- Data Table css -->
-  <link rel="stylesheet"
-    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/dataTables.min.css">
-  <!-- Text Editor css -->
-  <link rel="stylesheet"
-    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/editor-katex.min.css">
-  <link rel="stylesheet"
-    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/editor.atom-one-dark.min.css">
-  <link rel="stylesheet"
-    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/editor.quill.snow.css">
-  <!-- Date picker css -->
-  <link rel="stylesheet"
-    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/flatpickr.min.css">
-  <!-- Calendar css -->
-  <link rel="stylesheet"
-    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/full-calendar.css">
-  <!-- Vector Map css -->
-  <link rel="stylesheet"
-    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/jquery-jvectormap-2.0.5.css">
-  <!-- Popup css -->
-  <link rel="stylesheet"
-    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/magnific-popup.css">
-  <!-- Slick Slider css -->
-  <link rel="stylesheet"
-    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/slick.css">
+  <!-- DataTables CSS - CDN -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+
+  <!-- Text Editor CSS - Quill Editor CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.bubble.css">
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css">
+
+<!-- Calendar - FullCalendar CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.css">
+
+<!-- Vector Map - jVectorMap CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jvectormap-next@3.1.1/jquery-jvectormap.css">
+
+<!-- Popup - Magnific Popup CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.css">
+
+<!-- Slick Slider - CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+
   <!-- prism css -->
   <link rel="stylesheet"
     href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/prism.css">
-  <!-- file upload css -->
-  <link rel="stylesheet"
-    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/file-upload.css">
-
-  <link rel="stylesheet"
-    href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/lib/audioplayer.css">
+  
   <!-- main css -->
   <link rel="stylesheet"
     href="https://wowdash.pixcelsthemes.com/wowdash-bootstrap/WowDash/wowdash/assets/css/style.min.css">
@@ -58,11 +53,11 @@
 
 <body>
   <aside class="sidebar">
-    <button type="button" class="sidebar-close-btn">
+    <!-- <button type="button" class="sidebar-close-btn">
       <iconify-icon icon="radix-icons:cross-2"></iconify-icon>
-    </button>
+    </button> -->
     <div>
-      <a href="{% url 'dashboard_home' %}" class="sidebar-logo">
+      <a href="{% url 'dashboard_home' %}" >
        <svg width="280" height="80" viewBox="0 0 280 80" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <linearGradient id="primaryGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
