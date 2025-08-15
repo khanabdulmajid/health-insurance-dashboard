@@ -225,6 +225,42 @@ def dashboard_home(request):
         suitability_status = "Suitable" if predicted_health_status == "Good" else "Not Suitable"
        
     print(f"disease_values: {disease_values  }")
+    
+    # ___________________________________________________________________________________________
+    # chart data
+
+    bins = [0, 18, 30, 45, 60, 75, 100]
+    labels = ["0-18", "19-30", "31-45", "46-60", "61-75", "76+"]
+
+    # Copy dataset and add Age_Group + Health_Category
+    chart_df = cleaned_df.copy()
+    chart_df["Age_Group"] = pd.cut(chart_df["new_age"], bins=bins, labels=labels, right=True)
+
+    # Health_Category: Good (1) vs Bad (0)
+    chart_df["Health_Category"] = chart_df["HEALTH"].apply(lambda x: "Good" if x <= 3 else "Bad")
+
+    # Use human-friendly Insurance label
+    # chart_df["INSURANCE_LABEL"] = chart_df["INSURANCE_TYPE"].replace({
+    #     "Private Only": "Private",
+    #     "Public Only": "Public",
+    #     "Uninsured": "Uninsured",
+    #     "Mixed": "Mixed"
+    # })
+    chart_df["INSURANCE_LABEL"] = chart_df["INSURANCE_TYPE"]
+    # Group by insurance, age, health category
+    grouped = chart_df.groupby(["INSURANCE_LABEL", "Age_Group", "Health_Category"]).size().reset_index(name="count")
+
+    # Convert to nested dict structure: chart_data[insurance][age][health]
+    chart_data = {}
+    for ins in grouped["INSURANCE_LABEL"].unique():
+        chart_data[ins] = {}
+        for age in labels:
+            chart_data[ins][str(age)] = {"Good": 0, "Bad": 0}
+
+    for _, row in grouped.iterrows():
+        ins, age, health, count = row
+        chart_data[ins][str(age)][health] = int(count)
+
 
 
     context = {
@@ -244,6 +280,8 @@ def dashboard_home(request):
         "disease_data": disease_data,
         "disease_labels": disease_labels,
         "disease_values": disease_values,
+        "chart_data": json.dumps(chart_data),
+        "age_groups": json.dumps(labels),  
         
     }
 
