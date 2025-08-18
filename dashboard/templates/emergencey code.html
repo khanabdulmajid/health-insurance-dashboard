@@ -7,6 +7,7 @@
 
 {% block content %}
 
+
 <main class="dashboard-main">
   <div class="navbar-header">
     <div class="row align-items-center justify-content-between">
@@ -222,10 +223,13 @@
                   </select>
                 </div>
               </div>
-              <div class="card-body">
+              <div style="width:100%;">
                 <canvas id="insuranceHealthChart"></canvas>
               </div>
+
             </div>
+       <!-- New Chart ID -->
+              
           </div>
 
           <!-- Earning Statistic -->
@@ -289,30 +293,26 @@
 
 
         <div class="col-12">
-        <div style="background: transparent; box-shadow: none; border: none; padding: 0;">
-          <div class="d-flex align-items-center justify-content-between mb-3">
-            <div>
-              <!-- <label for="insuranceSelect" class="fw-semibold me-2 mb-0 text-secondary">Select Insurance Type:</label> -->
-
+          <div class="card h-100">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <h6 class="fw-bold text-lg mb-0">Health Outcomes by Insurance Type</h6>
+              <div>
+                <label for="insuranceSelect" class="fw-semibold me-2 mb-0">Select Insurance Type:</label>
+                <select id="insuranceSelect" class="form-select form-select-sm w-auto d-inline-block">
+                  <option value="Private">Private</option>
+                  <option value="Public">Public</option>
+                  <option value="Uninsured">Uninsured</option>
+                  <option value="Mixed">Mixed</option>
+                </select>
+              </div>
+            </div>
+            <div class="card-body">
+              <div id="chartContainer" style="height: 400px;"></div>
             </div>
           </div>
-          <div id="chartContainer" style="height: 400px;"></div>
-        </div>
-
-        <div class="col-12">
-        <div style="background: transparent; box-shadow: none; border: none; padding: 0;">
-          <div class="d-flex align-items-center justify-content-between mb-3">
-            <div>
-  
-              
-            </div>
-          </div>
-          <div id="chartContainer" style="height: 400px;"></div>
-        </div>
-      </div>
-
-      </div>
     </div>
+</div>
+</div>
 
 
         </div>
@@ -658,12 +658,10 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-  const chartData = JSON.parse('{{ chart_data|escapejs }}'); // From backend
-  const ageGroups = {{ age_groups|safe }}; // X-axis
+  const chartData = JSON.parse('{{ chart_data|escapejs }}');
+  const ageGroups = {{ age_groups|safe }};
 
   let ctx = document.getElementById("insuranceHealthChart").getContext("2d");
-  let insuranceSelect1 = document.getElementById("insuranceSelect1");
-  let currentChart;
 
   function buildChart(insuranceType) {
     const data = chartData[insuranceType];
@@ -676,32 +674,48 @@
       data: {
         labels: ageGroups,
         datasets: [
-          { label: "Good Health", data: goodVals, backgroundColor: "#22c55e" },
-          { label: "Bad Health", data: badVals, backgroundColor: "#ef4444" }
+          {
+            label: "Good Health",
+            data: goodVals,
+            backgroundColor: "#22c55e"
+          },
+          {
+            label: "Bad Health",
+            data: badVals,
+            backgroundColor: "#ef4444"
+          }
         ]
       },
       options: {
-        indexAxis: 'y',
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { position: 'top' } },
-        scales: {
-          x: { beginAtZero: true, title: { display: true, text: 'Number of Patients' } },
-          y: { title: { display: true, text: 'Age Groups' } }
-        }
+        indexAxis: 'y', // horizontal bars
+  responsive: true,
+  plugins: { legend: { position: 'top' } },
+  scales: {
+    x: { 
+      beginAtZero: true, 
+      title: { display: true, text: 'Number of Patients' },
+      grid: { display: false } // turn off x-axis grid lines
+    },
+    y: { 
+      title: { display: true, text: 'Age Groups' },
+      grid: { display: false } // turn off y-axis grid lines
+    }
+  }, // makes bars horizontal
+       
       }
     });
   }
 
-  // Initial load based on selected dropdown
-  currentChart = buildChart(insuranceSelect1.value);
+  // Initialize with first insurance type
+  let currentChart = buildChart("{{ insurance_types.0 }}");
 
-  // On dropdown change → reload chart
-  insuranceSelect1.addEventListener("change", (e) => {
+  // Update when dropdown changes
+  document.getElementById("insuranceSelect1").addEventListener("change", (e) => {
     currentChart.destroy();
     currentChart = buildChart(e.target.value);
   });
 </script>
+
 
 
 </body>

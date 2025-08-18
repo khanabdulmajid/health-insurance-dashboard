@@ -232,34 +232,63 @@ def dashboard_home(request):
     bins = [0, 18, 30, 45, 60, 75, 100]
     labels = ["0-18", "19-30", "31-45", "46-60", "61-75", "76+"]
 
-    # Copy dataset and add Age_Group + Health_Category
-    chart_df = cleaned_df.copy()
+    # # Copy dataset and add Age_Group + Health_Category
+    # chart_df = balanced_df.copy()
+    # chart_df["Age_Group"] = pd.cut(chart_df["new_age"], bins=bins, labels=labels, right=True)
+
+    # # Health_Category: Good (1) vs Bad (0)
+    # chart_df["Health_Category"] = chart_df["HEALTH"].apply(lambda x: "Good" if x <= 3 else "Bad")
+
+   
+    # chart_df["INSURANCE_LABEL"] = chart_df["INSURANCE_TYPE_ENC"]
+    # # Group by insurance, age, health category
+    # grouped = chart_df.groupby(["INSURANCE_LABEL", "Age_Group", "Health_Category"]).size().reset_index(name="count")
+
+    # # Convert to nested dict structure: chart_data[insurance][age][health]
+    # chart_data = {}
+    # for ins in grouped["INSURANCE_LABEL"].unique():
+    #     chart_data[ins] = {}
+    #     for age in labels:
+    #         chart_data[ins][str(age)] = {"Good": 0, "Bad": 0}
+
+    # for _, row in grouped.iterrows():
+    #     ins, age, health, count = row
+    #     chart_data[ins][str(age)][health] = int(count)
+    # Start with balanced_df
+    chart_df = balanced_df.copy()
+
     chart_df["Age_Group"] = pd.cut(chart_df["new_age"], bins=bins, labels=labels, right=True)
 
-    # Health_Category: Good (1) vs Bad (0)
-    chart_df["Health_Category"] = chart_df["HEALTH"].apply(lambda x: "Good" if x <= 3 else "Bad")
+    # Health Category: Good (1-3) vs Bad (4-5) -- adjust if your HEALTH is coded differently
+    chart_df["Health_Category"] = chart_df["HEALTH"].apply(lambda x: "Good" if x ==1 else "Bad")
+    # Mapping ENC → Label
+    insurance_mapping = {
+        0: "Private Only",
+        1: "Public Only",
+        2: "Uninsured", 
+        3: "Mixed"
+    }
 
-    # Use human-friendly Insurance label
-    # chart_df["INSURANCE_LABEL"] = chart_df["INSURANCE_TYPE"].replace({
-    #     "Private Only": "Private",
-    #     "Public Only": "Public",
-    #     "Uninsured": "Uninsured",
-    #     "Mixed": "Mixed"
-    # })
-    chart_df["INSURANCE_LABEL"] = chart_df["INSURANCE_TYPE"]
-    # Group by insurance, age, health category
+        # Add a label column
+    chart_df["INSURANCE_LABEL"] = chart_df["INSURANCE_TYPE_ENC"].map(insurance_mapping)
+
+    # Group by insurance, age, health
     grouped = chart_df.groupby(["INSURANCE_LABEL", "Age_Group", "Health_Category"]).size().reset_index(name="count")
 
-    # Convert to nested dict structure: chart_data[insurance][age][health]
+    # Convert into nested dict structure
     chart_data = {}
     for ins in grouped["INSURANCE_LABEL"].unique():
-        chart_data[ins] = {}
+        chart_data[str(ins)] = {}   # <-- cast insurance type to str
         for age in labels:
-            chart_data[ins][str(age)] = {"Good": 0, "Bad": 0}
+            chart_data[str(ins)][str(age)] = {"Good": 0 , "Bad": 0}
 
     for _, row in grouped.iterrows():
         ins, age, health, count = row
-        chart_data[ins][str(age)][health] = int(count)
+        chart_data[str(ins)][str(age)][health] = int(count)
+
+
+        # ---- Final: send to template ----
+
 
 
 
